@@ -3,17 +3,18 @@
 -export([start/0, stop/0, loop/0, md5/1, sha/1,
         test/0]).
 
-% FILL IN THESE TWO CLIENT FUNCTIONS
-% TO COMMUNICATE WITH THE SERVER BELOW
-% HINT:  THEY NEED TO SEND A MESSAGE, AND RECEIVE A MESSAGE
 md5(InputData) ->
-    % FILL THIS IN
-    ok.
-    
+    ?MODULE ! {self() , {md5, InputData}},
+    receive
+        {md5, OutputData} -> OutputData
+    end.
+
 sha(InputData) ->
-    % FILL THIS IN
-    ok.
-    
+    ?MODULE ! {self() , {sha, InputData}},
+    receive
+        {sha, OutputData} -> OutputData
+    end.
+
 test() ->
     TestString = "Hello World!",
     <<237,7,98,135,83,46,134,54,94,
