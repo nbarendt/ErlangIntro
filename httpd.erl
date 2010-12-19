@@ -1,6 +1,6 @@
 -module(httpd).
 
--export([start/0, serve/0, handle_request/1]).
+-export([start/0, serve/0, handle_request/0]).
 
 -define(PORT, 8000).
 
