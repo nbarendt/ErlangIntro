@@ -17,17 +17,17 @@ serve() ->
 
 accept_loop(LSocket) ->
     {ok, Socket} = gen_tcp:accept(LSocket),
-    HandlerPid = spawn(?MODULE, handle_request, [Socket]),
+    HandlerPid = spawn(?MODULE, handle_request, []),
     % change ownership (message delivery) to the new HandlerPid
     ok = gen_tcp:controlling_process(Socket, HandlerPid),
-    % send the HandlerPid a message telling it can go
-    HandlerPid ! go,
+    % send the HandlerPid a message with the socket
+    HandlerPid ! Socket,
     % go back to listening
     accept_loop(LSocket).
 
-handle_request(Socket) ->
-    receive % block until our parent tells us to go
-        go -> ok
+handle_request() ->
+    receive
+        Socket -> ok
     end,
     ok = inet:setopts(Socket, [{active, true},
                     {packet, http} ]),
