@@ -8,11 +8,19 @@
 % HINT:  THEY NEED TO SEND A MESSAGE, AND RECEIVE A MESSAGE
 md5(InputData) ->
     % FILL THIS IN
-    ok.
+    % Remember, the return value of a function is the value
+    %  of the last expression evaluated within the function
+    % The literal empty Erlang Binary <<>> below will be replaced with
+    %  your code.
+    <<>>.
     
 sha(InputData) ->
     % FILL THIS IN
-    ok.
+    % Remember, the return value of a function is the value
+    %  of the last expression evaluated within the function
+    % The literal empty Erlang Binary <<>> below will be replaced with
+    %  your code.
+   <<>>.
     
 test() ->
     TestString = "Hello World!",
