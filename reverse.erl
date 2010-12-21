@@ -3,7 +3,7 @@
 -export([start/0, loop/0]).
 
 start() ->
-    register(?MODULE, spawn(?MODULE, loop, [])).
+    register(server_reverse, spawn(?MODULE, loop, [])).
 
 loop() ->
     receive
